@@ -1,0 +1,14 @@
+/Users/apple/Documents/core/basics/bin/Debug/net8.0/basics
+/Users/apple/Documents/core/basics/bin/Debug/net8.0/basics.deps.json
+/Users/apple/Documents/core/basics/bin/Debug/net8.0/basics.runtimeconfig.json
+/Users/apple/Documents/core/basics/bin/Debug/net8.0/basics.dll
+/Users/apple/Documents/core/basics/bin/Debug/net8.0/basics.pdb
+/Users/apple/Documents/core/basics/obj/Debug/net8.0/basics.GeneratedMSBuildEditorConfig.editorconfig
+/Users/apple/Documents/core/basics/obj/Debug/net8.0/basics.AssemblyInfoInputs.cache
+/Users/apple/Documents/core/basics/obj/Debug/net8.0/basics.AssemblyInfo.cs
+/Users/apple/Documents/core/basics/obj/Debug/net8.0/basics.csproj.CoreCompileInputs.cache
+/Users/apple/Documents/core/basics/obj/Debug/net8.0/basics.dll
+/Users/apple/Documents/core/basics/obj/Debug/net8.0/refint/basics.dll
+/Users/apple/Documents/core/basics/obj/Debug/net8.0/basics.pdb
+/Users/apple/Documents/core/basics/obj/Debug/net8.0/basics.genruntimeconfig.cache
+/Users/apple/Documents/core/basics/obj/Debug/net8.0/ref/basics.dll
