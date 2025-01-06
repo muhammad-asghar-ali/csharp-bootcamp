@@ -417,23 +417,58 @@ namespace basics
             Rectangle rect2 = new(100, 40);
             Console.WriteLine("rect2.length : {0}", rect2.length);
 
-            // -------------------------------------------- OBJECT ORIENTED PROGRAMMING --------------------------------------------
+           // -------------------------------------------- Nullable Types --------------------------------------------
+            // Data types by default cannot have a value of null. Often null is needed
+            // when you are working with databases and you can create a null type by adding a ? to the definition
+            int? randNum = null;
+
+            if (randNum == null)
+            {
+                Console.WriteLine("randNum is null");
+            }
+
+            if (!randNum.HasValue)
+            {
+                Console.WriteLine("randNum is null");
+            }
+
+            Console.ReadLine();
+
+            // -------------------------------------------- Object Oriented Programming --------------------------------------------
+            
             // A class models real world objects by defining their attributes (fields) and capabilities (methods) 
             // Then unlike with structs you can  inherit from a class and create more specific subclass types
             // Add a class Project -> Add Class
             // Create an Animal object You could also assign values like fox.name = "Red"
-            Animal fox = new()
-            {
-                name = "Red",
-                sound = "Raaaw"
-            };
+            
+            Animal fox = new();
+            fox.SetName("Whiskers");
 
-            // Call the static method
             Console.WriteLine("# of Animals {0}", Animal.GetNumAnimals());
 
             // You can also create static utility classes Project -> Add Class
             Console.WriteLine("Area of Rectangle : {0}", ShapeMath.GetArea("rectangle", 5, 6));
 
+            // --- Setter and Getter ---
+            Animal cat = new(); 
+
+            // Call the setter
+            cat.SetName("Whiskers");
+
+            // Set the property
+            cat.Sound = "Meow";
+            Console.WriteLine("The cat is named {0} and says {1}", cat.GetName(), cat.Sound);
+
+            // Test auto generated getters and setters
+            cat.Owner = "John";
+            Console.WriteLine("{0} owner is {1}", cat.GetName(), cat.Owner);
+
+            // Get the read-only id number
+            Console.WriteLine("{0} shelter id is {1}", cat.GetName(), cat.idNum);
+
+            // Test static property
+            Console.WriteLine("# of Animals : {0}", Animal.NumOfAnimals);
+            Console.ReadLine();
         }
 
         // ----- FUNCTIONS -----
