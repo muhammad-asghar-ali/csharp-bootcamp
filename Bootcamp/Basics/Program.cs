@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using System.Text;
 
-namespace basics
+namespace Basics
 {
     public class Program
     {
@@ -417,7 +417,7 @@ namespace basics
             Rectangle rect2 = new(100, 40);
             Console.WriteLine("rect2.length : {0}", rect2.length);
 
-           // -------------------------------------------- Nullable Types --------------------------------------------
+            // -------------------------------------------- Nullable Types --------------------------------------------
             // Data types by default cannot have a value of null. Often null is needed
             // when you are working with databases and you can create a null type by adding a ? to the definition
             int? randNum = null;
@@ -435,12 +435,12 @@ namespace basics
             Console.ReadLine();
 
             // -------------------------------------------- Object Oriented Programming --------------------------------------------
-            
+
             // A class models real world objects by defining their attributes (fields) and capabilities (methods) 
             // Then unlike with structs you can  inherit from a class and create more specific subclass types
             // Add a class Project -> Add Class
             // Create an Animal object You could also assign values like fox.name = "Red"
-            
+
             Animal fox = new();
             fox.SetName("Whiskers");
 
@@ -450,7 +450,7 @@ namespace basics
             Console.WriteLine("Area of Rectangle : {0}", ShapeMath.GetArea("rectangle", 5, 6));
 
             // --- Setter and Getter ---
-            Animal cat = new(); 
+            Animal cat = new();
 
             // Call the setter
             cat.SetName("Whiskers");
