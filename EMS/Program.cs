@@ -60,7 +60,7 @@ namespace EMS
             var emps = db.Employees.Include(e => e.EmployeeDetails).ToList();
             foreach (var epx in emps)
             {
-                Console.WriteLine(epx.EmployeeDetails.Email);
+                Console.WriteLine($"Email: {epx.EmployeeDetails.Email}");
             }
 
             var projects = db.Projects.Include(e => e.EmployeeProjects).ThenInclude(e => e.Employee).ToList();
@@ -72,6 +72,31 @@ namespace EMS
                     Console.WriteLine($"Employee Name: {empproj.Employee.FirstName}");
                 }
             }
+
+            // explict loading
+            var empsExpts = db.Employees.ToList();
+
+            foreach (var expt in empsExpts)
+            {
+                db.Entry(expt).Reference(e => e.EmployeeDetails).Load(); // for one-to-one use Reference
+                Console.WriteLine($"ID: {expt.Id} Email: {expt.EmployeeDetails.Email}");
+            }
+
+            var managerx = db.Managers.ToList();
+            foreach (var mang in managerx)
+            {
+                Console.WriteLine($"Manager Name: {mang.FirstName}");
+                db.Entry(mang).Collection(e => e.Employees).Load();
+                if (mang.Employees.Any())
+                {
+                    Console.WriteLine("Employees");
+                    foreach (var item in mang.Employees)
+                    {
+                        Console.WriteLine($"Employee Name: {item.FirstName}");
+                    }
+                }
+            }
         }
+
     }
 }
