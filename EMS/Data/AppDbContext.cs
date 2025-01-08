@@ -31,7 +31,8 @@ namespace EMS.Data
                 throw new InvalidOperationException("Connection string is not set in environment variables.");
             }
 
-            options.UseSqlServer(ConnectionString);
+            // UseLazyLoadingProxies: for lazy loading 
+            options.UseLazyLoadingProxies().UseSqlServer(ConnectionString);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

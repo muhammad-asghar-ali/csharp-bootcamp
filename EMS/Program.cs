@@ -96,7 +96,21 @@ namespace EMS
                     }
                 }
             }
-        }
 
+            // lazy loading
+            var mngrs = db.Managers.ToList();
+            foreach (var mg in mngrs)
+            {
+                Console.WriteLine($"Manager Name: Lazy Loading: {mg.FirstName}");
+                if (mg.Employees.Any())
+                {
+                    Console.WriteLine("Employees: Lazy Loading");
+                    foreach (var ep in mg.Employees)
+                    {
+                        Console.WriteLine($"Employee Name: Lazy Loading: {ep.FirstName}");
+                    }
+                }
+            }
+        }
     }
 }

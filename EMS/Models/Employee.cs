@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace EMS.Models
 {
-    class Employee
+    public class Employee
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -11,12 +11,14 @@ namespace EMS.Models
         public long Salary { get; set; }
 
         // One to One relation.
-        public EmployeeDetails EmployeeDetails { get; set; }
+        public virtual EmployeeDetails EmployeeDetails { get; set; }
 
         public int ManagerId { get; set; } // FK
 
-        public Manager Manager { get; set; } // Navigation Prop
+        public virtual Manager Manager { get; set; } // Navigation Prop
 
-        public ICollection<EmployeeProject> EmployeeProjects { get; set; }
+        // for lazy loading make it virtual 
+        // lazy loading work on virtual navigation property.
+        public virtual ICollection<EmployeeProject> EmployeeProjects { get; set; }
     }
 }

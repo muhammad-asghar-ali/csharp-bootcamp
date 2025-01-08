@@ -5,14 +5,14 @@ using System.Threading.Tasks;
 
 namespace EMS.Models
 {
-    class EmployeeProject
+    public class EmployeeProject
     {
         public int EmployeeId { get; set; } // FK
 
-        public Employee Employee { get; set; } // Navigation Prop
+        public virtual Employee Employee { get; set; } // Navigation Prop
 
         public int ProjectId { get; set; } // FK
 
-        public Project Project { get; set; } // Navigation Prop
+        public virtual Project Project { get; set; } // Navigation Prop
     }
 }

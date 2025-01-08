@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace EMS.Models
 {
-    class EmployeeDetails
+    public class EmployeeDetails
     {
         public int Id { get; set; }
 
@@ -15,6 +15,6 @@ namespace EMS.Models
 
         public int EmployeeId { get; set; }
 
-        public Employee Employee { get; set; }
+        public virtual Employee Employee { get; set; }
     }
 }
