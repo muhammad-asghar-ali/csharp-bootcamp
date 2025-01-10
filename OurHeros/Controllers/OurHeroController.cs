@@ -12,19 +12,21 @@ namespace OurHeros.Controllers
     [ApiController]
     public class OurHeroController(IOurHeroService heroService) : ControllerBase
     {
-        private readonly IOurHeroService _heroService = heroService;
+        // Inject IOurHeroService via constructor
+        public IOurHeroService HeroService { get; } = heroService ?? throw new ArgumentNullException(nameof(heroService));
 
         [HttpGet]
-        public IActionResult Get([FromQuery] bool? isActive = null)
+        public async Task<IActionResult> Get([FromQuery] bool? isActive = null)
         {
-            return Ok(_heroService.GetAllHeros(isActive));
+            var heros = await HeroService.GetAllHeros(isActive);
+            return Ok(heros);
         }
 
-        [HttpGet]
-        [Route("{id}")]
-        public IActionResult Get(int id)
+        [HttpGet("{id}")]
+        //[Route("{id}")] // /api/OurHero/:id
+        public async Task<IActionResult> Get(int id)
         {
-            var hero = _heroService.GetHerosByID(id);
+            var hero = await HeroService.GetHerosByID(id);
             if (hero == null)
             {
                 return NotFound();
@@ -33,9 +35,9 @@ namespace OurHeros.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(AddUpdateOurHero heroObject)
+        public async Task<IActionResult> Post([FromBody] AddUpdateOurHero heroObject)
         {
-            var hero = _heroService.AddOurHero(heroObject);
+            var hero = await HeroService.AddOurHero(heroObject);
 
             if (hero == null)
             {
@@ -51,9 +53,9 @@ namespace OurHeros.Controllers
 
         [HttpPut]
         [Route("{id}")]
-        public IActionResult Put([FromRoute] int id, [FromBody] AddUpdateOurHero heroObject)
+        public async Task<IActionResult> Put([FromRoute] int id, [FromBody] AddUpdateOurHero heroObject)
         {
-            var hero = _heroService.UpdateOurHero(id, heroObject);
+            var hero = await HeroService.UpdateOurHero(id, heroObject);
             if (hero == null)
             {
                 return NotFound();
@@ -68,9 +70,9 @@ namespace OurHeros.Controllers
 
         [HttpDelete]
         [Route("{id}")]
-        public IActionResult Delete([FromRoute] int id)
+        public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            if (!_heroService.DeleteHerosByID(id))
+            if (!await HeroService.DeleteHerosByID(id))
             {
                 return NotFound();
             }
