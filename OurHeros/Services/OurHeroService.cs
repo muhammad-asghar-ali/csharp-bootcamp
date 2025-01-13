@@ -1,11 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using OurHeros.Model;
-using System.Linq;
+using OurHeros.Models;
 using Microsoft.EntityFrameworkCore;
-
 
 namespace OurHeros.Services
 {

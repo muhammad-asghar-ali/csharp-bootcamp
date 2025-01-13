@@ -1,9 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using OurHeros.Model;
+using OurHeros.Models;
 
 namespace OurHeros
 {
@@ -11,6 +7,8 @@ namespace OurHeros
     {
         // Registered DB Model in OurHeroDbContext file
         public required DbSet<OurHero> OurHeros { get; set; }
+
+        public required DbSet<User> Users { get; set; }
 
         /*
          OnModelCreating mainly used to configured our EF model
@@ -29,6 +27,17 @@ namespace OurHeros
                     FirstName = "System",
                     LastName = "",
                     IsActive = true,
+                }
+            );
+
+            modelBuilder.Entity<User>().HasData(
+                new User
+                {
+                    Id = 1,
+                    FirstName = "System",
+                    LastName = "",
+                    Username = "System",
+                    Password = "System",
                 }
             );
         }

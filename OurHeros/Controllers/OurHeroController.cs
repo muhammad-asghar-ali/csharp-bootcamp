@@ -1,19 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using OurHeros.Model;
+using OurHeros.Models;
 using OurHeros.Services;
 
 namespace OurHeros.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class OurHeroController(IOurHeroService heroService) : ControllerBase
     {
         // Inject IOurHeroService via constructor
-        public IOurHeroService HeroService { get; } = heroService ?? throw new ArgumentNullException(nameof(heroService));
+        private IOurHeroService HeroService { get; } = heroService ?? throw new ArgumentNullException(nameof(heroService));
 
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] bool? isActive = null)
